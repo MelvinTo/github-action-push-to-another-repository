@@ -57,7 +57,7 @@ inputs:
   append-only:
     type: boolean
     description: '[Optional] do not remove all the files in the target directory, append only. default true'
-    default: true
+    default: false
     required: false
 
 runs:
