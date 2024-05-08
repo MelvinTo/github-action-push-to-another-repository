@@ -106,8 +106,6 @@ function copy_file {
     cp -a "$SOURCE_FILE" "$CLONE_DIR/$TARGET_DIRECTORY"
 }
 
-if [[ -z "$FILES" ]]; then
-fi
 SAVEIFS=$IFS   # Save current IFS (Internal Field Separator)
 IFS=$'\n'      # Change IFS to newline char
 files=($FILES) # split the `names` string into an array by the same name
