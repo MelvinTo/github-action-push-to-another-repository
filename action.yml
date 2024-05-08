@@ -54,6 +54,11 @@ inputs:
       [Optional] create target branch if not exist. Defaults to `false`
     default: false
     required: false
+  append-only:
+    type: boolean
+    description: '[Optional] do not remove all the files in the target directory, append only. default true'
+    default: true
+    required: false
 
 runs:
   using: docker
@@ -71,6 +76,7 @@ runs:
     - '${{ inputs.commit-message }}'
     - '${{ inputs.target-directory }}'
     - '${{ inputs.create-target-branch-if-needed }}'
+    - '${{ inputs.append-only }}'
 branding:
   icon: git-commit
   color: green

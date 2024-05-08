@@ -16,6 +16,7 @@ TARGET_BRANCH="${9}"
 COMMIT_MESSAGE="${10}"
 TARGET_DIRECTORY="${11}"
 CREATE_TARGET_BRANCH_IF_NEEDED="${12}"
+APPEND_ONLY="${13}"
 
 if [ -z "$DESTINATION_REPOSITORY_USERNAME" ]
 then
@@ -103,11 +104,14 @@ mv "$CLONE_DIR/.git" "$TEMP_DIR/.git"
 # $TARGET_DIRECTORY is '' by default
 ABSOLUTE_TARGET_DIRECTORY="$CLONE_DIR/$TARGET_DIRECTORY/"
 
-echo "[+] Deleting $ABSOLUTE_TARGET_DIRECTORY"
-rm -rf "$ABSOLUTE_TARGET_DIRECTORY"
 
-echo "[+] Creating (now empty) $ABSOLUTE_TARGET_DIRECTORY"
-mkdir -p "$ABSOLUTE_TARGET_DIRECTORY"
+if [ "$APPEND_ONLY" = "false" ]; then
+    echo "[+] Deleting $ABSOLUTE_TARGET_DIRECTORY"
+    rm -rf "$ABSOLUTE_TARGET_DIRECTORY"
+
+    echo "[+] Creating (now empty) $ABSOLUTE_TARGET_DIRECTORY"
+    mkdir -p "$ABSOLUTE_TARGET_DIRECTORY"
+fi
 
 echo "[+] Listing Current Directory Location"
 ls -al
